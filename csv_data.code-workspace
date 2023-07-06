@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "csv_data",
+			"path": "../Desktop/csv_data"
+		},
+		{
+			"name": "imfdata",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
