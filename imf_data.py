@@ -5,12 +5,12 @@ import plotly.express as px
 st.title('経済チェックアプリ')
 
 # CSVファイルの読み込み
-df_gdp_all = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/GDP（前年比）.csv', index_col=0)
-df_gdp_usd = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/GDP（米ドル）.csv', index_col=0)
-df_gdp_per = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/一人当たりGDP.csv', index_col=0)
-df_cpi = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/インフレ率（％）.csv', index_col=0)
-df_unemp = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/失業率.csv', index_col=0)
-df_pop = pd.read_csv('/Users/daichi_oka/Desktop/csv_data/人口.csv', index_col=0)
+df_gdp_all = pd.read_csv('GDP（前年比）.csv', index_col=0)
+df_gdp_usd = pd.read_csv('GDP（米ドル）.csv', index_col=0)
+df_gdp_per = pd.read_csv('一人当たりGDP.csv', index_col=0)
+df_cpi = pd.read_csv('インフレ率（％）.csv', index_col=0)
+df_unemp = pd.read_csv('失業率.csv', index_col=0)
+df_pop = pd.read_csv('人口.csv', index_col=0)
 
 # データフレームを転置（行と列を入れ替える）
 df_gdp_all = df_gdp_all.transpose()
