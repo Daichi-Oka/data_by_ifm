@@ -70,11 +70,12 @@ fig5.update_yaxes(title='%')
 fig7.update_xaxes(title='')
 fig7.update_yaxes(title='百万人')
 
-fig1 = px.line(selected_data1, line_width=3)
-fig2 = px.line(selected_data2, line_width=3)
-fig3 = px.line(selected_data3, line_width=3)
-fig4 = px.line(selected_data4, line_width=3)
-fig5 = px.line(selected_data5, line_width=3)
-fig7 = px.line(selected_data7, line_width=3)
+# Streamlitでグラフを表示
+st.plotly_chart(fig1)
+st.plotly_chart(fig2)
+st.plotly_chart(fig3)
+st.plotly_chart(fig4)
+st.plotly_chart(fig5)
+st.plotly_chart(fig7)
 
 st.write('source: IMF 世界経済見通し')
