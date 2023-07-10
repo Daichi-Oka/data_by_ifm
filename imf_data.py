@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-st.title('世界経済データ')
+st.title('世界の経済データ')
 
 # CSVファイルの読み込み
 df_gdp_all = pd.read_csv('csv_data/GDP（前年比）.csv', index_col=0)
@@ -28,8 +28,8 @@ df_cpi = df_cpi.applymap(lambda x: float(x.replace(',', '')) if isinstance(x, st
 df_unemp = df_unemp.applymap(lambda x: float(x.replace(',', '')) if isinstance(x, str) else x)
 df_pop = df_pop.applymap(lambda x: float(x.replace(',', '')) if isinstance(x, str) else x)
 
-# ユーザーに国名の選択肢を表示
-selected_countries = st.multiselect('国名を選択してください', df_gdp_all.columns)
+# ユーザーに国名の選択肢を表示（サイドバーに移動）
+selected_countries = st.sidebar.multiselect('国名を選択してください', df_gdp_all.columns)
 
 # 選択した国のデータを抽出
 selected_data1 = df_gdp_all.loc[:, selected_countries] if all(country in df_gdp_all.columns for country in selected_countries) else pd.DataFrame()
@@ -48,13 +48,13 @@ fig4 = px.line(selected_data4)
 fig5 = px.line(selected_data5)
 fig7 = px.line(selected_data7)
 
-# グラフにタイトルを追加
-fig1.update_layout(title='GDP（前年比）')
-fig2.update_layout(title='GDP')
-fig3.update_layout(title='国民一人当たりのGDP')
-fig4.update_layout(title='インフレ率（前年比）')
-fig5.update_layout(title='失業率')
-fig7.update_layout(title='人口')
+# # グラフにタイトルを追加
+# fig1.update_layout(title='GDP（前年比）')
+# fig2.update_layout(title='GDP')
+# fig3.update_layout(title='国民一人当たりのGDP')
+# fig4.update_layout(title='インフレ率（前年比）')
+# fig5.update_layout(title='失業率')
+# fig7.update_layout(title='人口')
 
 # x,y軸のラベル
 fig1.update_xaxes(title='')
@@ -70,12 +70,17 @@ fig5.update_yaxes(title='%')
 fig7.update_xaxes(title='')
 fig7.update_yaxes(title='百万人')
 
-# Streamlitでグラフを表示
-st.plotly_chart(fig1)
-st.plotly_chart(fig2)
-st.plotly_chart(fig3)
-st.plotly_chart(fig4)
-st.plotly_chart(fig5)
-st.plotly_chart(fig7)
+with st.expander("GDP（前年比）"):
+    st.plotly_chart(fig1)
+with st.expander("GDP"):
+    st.plotly_chart(fig2)
+with st.expander("国民一人当たりのGDP"):
+    st.plotly_chart(fig3)
+with st.expander("インフレ率（前年比）"):
+    st.plotly_chart(fig4)
+with st.expander("失業率"):
+    st.plotly_chart(fig5)
+with st.expander("人口"):
+    st.plotly_chart(fig7)
 
 st.write('source: IMF 世界経済見通し')
